@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Consulter la liste des mails {% endblock %}
+
+{% block body %}
+<!-- Main content -->
+ <form role="form" action="{{path('delete_envoi_mail')}}" method="post"
+                                  enctype="multipart/form-data">
+    <section class="content">
+      <div class="row">
+          <input type ="text" value={{entite}} name="entite" id="entite" hidden>
+            <input type ="text" value={{id}} name="id" id="id" hidden>
+        <!-- /.col -->
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Detail mails envoyés au {{entite}}(s)</h3>
+
+              <div class="card-tools">
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" placeholder="Recherche mail">
+                  <div class="input-group-append">
+                    <div class="btn btn-primary">
+                      <i class="fas fa-search"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <div class="mailbox-controls">
+                <!-- Check all button -->
+                 
+              
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm">
+                  <i class="fas fa-sync-alt"></i>
+                </button>
+                <div class="float-right">
+                  1-50/200
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button type="button" class="btn btn-default btn-sm">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
+                  <!-- /.btn-group -->
+                </div>
+                <!-- /.float-right -->
+              </div>
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                  <tbody>
+              {% for boiteEnvoi in boiteEnvois %}
+                  <tr>
+                   <td class="mailbox-name" hidden>{{boiteEnvoi.id}}</td>
+                   
+                    <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></td>
+                    <td class="mailbox-name"><b>{{boiteEnvoi.objet}}</b></td>
+                    <td class="mailbox-subject"> {{boiteEnvoi.message}}
+                    </td> 
+                    <td class="mailbox-date">{{boiteEnvoi.date_envoi}}</td>
+                  </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+                <!-- /.table -->
+              </div>
+              <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer p-0">
+              <div class="mailbox-controls">
+                <!-- Check all button -->
+                
+                <div class="btn-group">
+                  
+                  <button type="button" class="btn btn-default btn-sm">
+                    <i class="fas fa-reply"></i>
+                  </button>
+                  
+                </div>
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm">
+                  <i class="fas fa-sync-alt"></i>
+                </button>
+                <div class="float-right">
+                  1-50/200
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button type="button" class="btn btn-default btn-sm">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
+                  <!-- /.btn-group -->
+                </div>
+                <!-- /.float-right -->
+              </div>
+            </div>
+          </div>
+ <h3 class="card-title">Detail des {{entite}}(s)  destinataire</h3>
+      <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                    <thead> 
+                  <tr>
+                    <th>Nom </th>
+                    <th>Prenom </th> 
+                   
+                  </tr>
+                  </thead>
+                  <tbody>
+              {% for boiteReception in boiteReceptions %}
+                  <tr>
+                    
+                   
+                    <td class="mailbox-name"> {{boiteReception.nom}} </td>
+                    <td class="mailbox-subject">  {{boiteReception.prenom}} 
+                    </td> 
+                     
+                  </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+                <!-- /.table -->
+              </div>
+
+<div class="card-footer">
+                <div class="float-right">
+                   <button type="submit" class="btn btn-block btn-danger"><i class="far fa-trash-alt"></i> Supprimer</button>
+                </div>
+                 </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    </form>
+{% endblock %}

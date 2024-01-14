@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Liste des licencies de la categorie   {{libellecategorie}}  {% endblock %}
+
+{% block body %}
+ 
+       
+<div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Liste des licencies de la categorie :<marquee><b> {{libellecategorie}}</b></marquee></h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead> 
+                  <tr>
+                    <th>Numero licence</th>
+                    <th>Nom licencie</th>
+                    <th>Prenom licencie</th>
+                    <th>Nom du contact</th>
+                    <th>Prenom du contact</th>
+                    <th>Email du contact</th>
+                    <th>Telephone du  contact</th>
+                    <th>Code categorie</th>
+                    <th>Nom categorie</th>
+                   
+                  </tr>
+                  </thead>
+                  <tbody>
+                   {% for licenciescategorie in licenciescategories %}
+                  <tr>
+                    <td>{{licenciescategorie.numero_licence}} </td>
+                    <td>{{licenciescategorie.nom }} </td> 
+                    <td>{{licenciescategorie.prenom }} </td> 
+                    <td>{{licenciescategorie.nomcontact}} </td>
+                    <td>{{licenciescategorie.prenomcontact }} </td> 
+                    <td>{{licenciescategorie.emailcontact }} </td> 
+                    <td>{{licenciescategorie.telcontact}} </td>
+                    <td>{{licenciescategorie.codecateg }} </td> 
+                    <td>{{licenciescategorie.nomcateg }} </td> 
+                     
+                  </tr>
+                    {% endfor %}
+                  </tbody>
+                  <tfoot>
+                  
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+           
+         
+            </div>
+{% endblock %}

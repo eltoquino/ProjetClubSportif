@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello ListeLicencieController!{% endblock %}
+
+{% block body %}
+ 
+       
+<div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Consulter la liste de(s) <b> {{entite}} </b> (s) d'une categories</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                   {% for categorie in categories %}
+                  <tr>
+                    <td>{{categorie.code}} </td>
+                    <td>{{categorie.nom }} </td> 
+                    <td>
+                   
+                             <ul>
+                                {% if entite=='licencie' %}
+                                    <a class="nav-link"  href="{{ path('app_liste_licencie_categorie', { 'id': categorie.id }) }}"><span class="far fa-file-alt"></span></a>
+                               {% else %}
+                                    <a class="nav-link"  href="{{ path('app_liste_contacts_categorie', { 'id': categorie.id }) }}"><span class="far fa-file-alt"></span></a>
+                               
+                              {% endif %}
+
+
+                            </ul>
+
+
+                    </td>
+                  </tr>
+                    {% endfor %}
+                  </tbody>
+                  <tfoot>
+                  
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+           
+         
+            </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+Microsoft Windows [version 10.0.19045.3324]
+(c) Microsoft Corporation. Tous droits réservés.
+
+C:\Users\VASSIATIN>cd ..
+
+C:\Users>cd ..
+
+C:\>cd wamp64
+Composer create-project Symfony/website-skeleton myOwner
+C:\wamp64>cd www
+
+C:\wamp64\www>cd myOwner
+
+C:\wamp64\www\myOwner>php bin/console make:controller HomeController
+
+
+ [ERROR] The file "templates/home/index.html.twig" can't be generated because it already exists.
+
+
+
+C:\wamp64\www\myOwner>php bin/console make:controller HomeController
+
+
+ [ERROR] The file "templates/home/index.html.twig" can't be generated because it already exists.
+
+
+
+C:\wamp64\www\myOwner>
+C:\wamp64\www\myOwner>php bin/console make:controller HomeController
+
+ created: src/Controller/HomeController.php
+ created: templates/home/index.html.twig
+
+
+  Success!
+
+
+ Next: Open your new controller class and add some pages!
+
+C:\wamp64\www\myOwner>

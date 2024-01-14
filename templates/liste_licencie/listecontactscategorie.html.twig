@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Liste des contacts de la categorie   {{libellecategorie}}  {% endblock %}
+
+{% block body %}
+ 
+       
+<div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Liste des contacts de la categorie :<marquee><b> {{libellecategorie}}</b></marquee></h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead> 
+                  <tr>
+                    <th>Nom du contact</th>
+                    <th>Prenom du contact</th>
+                    <th>Email du contact</th>
+                    <th>Telephone du  contact</th>
+                    <th>Code categorie</th>
+                    <th>Nom categorie</th>
+                   
+                  </tr>
+                  </thead>
+                  <tbody>
+                   {% for contactscategorie in contactscategories %}
+                  <tr>
+                    <td>{{contactscategorie.nomcontact}} </td>
+                    <td>{{contactscategorie.prenomcontact }} </td> 
+                    <td>{{contactscategorie.emailcontact }} </td> 
+                    <td>{{contactscategorie.telcontact}} </td>
+                    <td>{{contactscategorie.codecateg }} </td> 
+                    <td>{{contactscategorie.nomcateg }} </td> 
+                     
+                  </tr>
+                    {% endfor %}
+                  </tbody>
+                  <tfoot>
+                  
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+           
+         
+            </div>
+{% endblock %}

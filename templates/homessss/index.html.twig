@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div class="panel panel-default">
+        <div class="panel-heading main-color-bg">
+            <h3 class="panel-title"><b>Liste des contrats</b></h3>
+        </div>
+
+        <div class="panel-body">
+
+
+
+            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+
+                    <th>N° dossier</th>
+                    <th>Intitule</th>
+
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for dosDossier in categories %}
+                    <tr>
+
+                        <td>{{ dosDossier.idDossier }}</td>
+                        <td>{{ dosDossier.intitule }}</td>
+
+                        <td>
+                            <ul>
+                                <li>
+                                    <a class="btn btn-success btn-xs"  href="{{ path('contrat_impression_', { 'id': dosDossier.id }) }}"><span class="fa fa-print"></span></a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-success btn-xs"  href="{{ path('contrat_impression_word', { 'id': dosDossier.id }) }}"><span class="fa fa-print"></span></a>
+                                </li>
+
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+{% endblock %}

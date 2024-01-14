@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Envoi de mail{% endblock %}
+
+{% block body %}
+<div class="">
+    <!-- Content Header (Page header) -->
+     <div class="col-md-12" style="text-align: center; margin-top: 15px">
+                {%  if app.session.get('message') is not null and app.session.get('message') is not empty %}
+                    <p class="alert alert-success">{{ app.session.get('message') }}</p>
+                    {{ app.session.set('message', '') }}
+                {% endif %}
+
+                {%  if app.session.get('messageError') is not null and app.session.get('messageError') is not empty %}
+                    <p class="alert alert-danger">{{ app.session.get('messageError') }}</p>
+                    {{ app.session.set('messageError', '') }}
+                {% endif %}
+            </div>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+           
+          <!-- /.col -->
+          <div class="col-sm-12">
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title">Nouveau message aux {{entite}}</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="form-group">
+                
+
+ <form role="form" action="{{path('app_envoi_mail')}}" method="post"
+                                  enctype="multipart/form-data">
+
+
+<div class="form-group">
+                  
+                  <div class="form-group">
+                  <label>{{entite}}</label>
+                  <select id="educateur_id[]" name="educateur_id[]" class="select2" multiple="multiple" data-placeholder="Selection" style="width: 100%;">
+                    {% for e in educateurs %}
+                      <option value={{ e.id }}>{{ e.email }}</option>
+                     {% endfor %}
+
+                  </select>
+                </div>
+                 <input type ="text" value={{entite}} name="entite" id="entite" hidden>
+                <div class="form-group">
+                  <input type ="text" name="objet" id="objet" class="form-control" placeholder="Objet:">
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" class="form-control" style="height: 300px">
+                        
+                    </textarea>
+                </div>
+                 
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <div class="float-right">
+                  <button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Brouillon</button>
+                  <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Envoyer</button>
+                </div>
+                 </div>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+</form>
+{% endblock %}
