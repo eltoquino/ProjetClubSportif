@@ -119,6 +119,7 @@ class WriteMailController extends AbstractController
         return $this->render('write_mail/consulterMail.html.twig', [
             'controller_name' => 'WriteMailController',
             'boiteEnvois'=>$boiteEnvoi,
+            'entite'=>$entite
         ]);
         
     }
